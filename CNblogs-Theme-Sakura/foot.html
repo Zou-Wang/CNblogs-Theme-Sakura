@@ -1,0 +1,222 @@
+<!--live2d-->
+<script src="https://blog-static.cnblogs.com/files/zouwangblog/autoload.js"></script>
+<!--live2dend-->
+
+<!--放大图片-->
+<link rel="stylesheet" type="text/css" href="https://blog-static.cnblogs.com/files/zouwangblog/zoom.css">
+<script src="https://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.2.0/js/transition.js"></script>
+<script src="https://blog-static.cnblogs.com/files/zouwangblog/zoom.js"></script>
+<script type='text/javascript'>$('#cnblogs_post_body img').attr('data-action', 'zoom');</script>
+<!--放大图片end-->
+
+<!--鼠标特效-->
+<script src="https://blog-static.cnblogs.com/files/zouwangblog/mouse-click.js"></script>
+<canvas width="1777" height="841" style="position: fixed; left: 0px; top: 0px; z-index: 2147483647; pointer-events: none;"></canvas>
+<!--鼠标特效 end-->
+
+
+<!-- Music-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.0/dist/APlayer.min.css">
+<script src="https://blog-static.cnblogs.com/files/zouwangblog/APlayer.min.js"></script>
+<script src="https://unpkg.com/meting@1.2/dist/Meting.min.js"></script>
+<div id="player" class="aplayer aplayer-withlist aplayer-fixed" data-id="2878443703" data-server="netease" data-type="playlist" data-order="random" data-fixed="true" data-listfolded="true" data-theme="orange"></div>
+<!-- Music end -->
+
+
+
+<!--botui-->
+<link rel="stylesheet" href="https://blog-static.cnblogs.com/files/zouwangblog/botui.min.css">
+<link rel="stylesheet" href="https://blog-static.cnblogs.com/files/zouwangblog/botui-theme-default.css">
+<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.3.4/vue.min.js"></script>
+<script src="https://blog-static.cnblogs.com/files/zouwangblog/botui.min.js"></script>
+<script type="text/javascript">
+ $(document).ready(function(){  	
+if (window.location.href === 'https://www.cnblogs.com/zouwangblog/articles/11157339.html') {
+				var botui = new BotUI('botui-app'); // 参数是容器的id
+
+				botui.message.bot({ // 第一条信息
+					delay: 200,
+					content: 'Hi, there👋'
+				}).then(function () {
+					return botui.message.bot({ // 第二条信息
+						delay: 1000, // 等待1秒
+						content: '这里是Toretto'
+					});
+
+				}).then(function () {
+					return botui.message.bot({ // 第三条信息
+						delay: 1000, // 等待1秒
+						content: '一个傲娇的Java程序员'
+					});
+
+				}).then(function () {
+					return botui.action.button({ // 与用户交互
+						delay: 1000,
+						action: [
+							{
+								text: ' 然后呢？ 😃',
+								value: 'sure'
+							},
+							{
+								text: '少废话啦😣',
+								value: 'skip'
+							}
+						]
+					});
+
+
+				}).then(function (res) {
+					if (res.value == 'sure') {
+						tutorial();
+					}
+					else if (res.value == 'skip') {
+						end();
+					}
+				});
+
+				var tutorial = function () {
+					botui.message.add({
+						delay: 1000,
+						content: "😘"
+					}).then(function () {
+						return botui.message.add({
+							delay: 1000,
+							content: '呐，告诉我你是谁吧'
+						});
+					}).then(function () {
+						return botui.message.add({
+							delay: 1200,
+							content: '写上你的名字（填写后按回车键）'
+						});
+					}).then(function () {
+						return botui.action.text({
+							delay: 800,
+							action: {
+								value: 'Toretto',
+								placeholder: '填写你的名字'
+							}
+						});
+					}).then(function (res) {
+						return botui.message.bot({
+							delay: 500,
+							content: res.value + ' 很高兴认识你呢'
+						});
+
+					}).then(function () {
+						return botui.message.add({
+							delay: 1200,
+							content: '呐~我也介绍一下自己吧'
+						});
+					}).then(function (res) {
+						return botui.message.bot({
+							delay: 1400,
+							content: '目前在大连高新区做软件开发'
+						});
+
+					}).then(function (res) {
+						return botui.message.bot({
+							delay: 1400,
+							content: '主要负责前端项目的搭建和设计，后台Java的开发工作'
+						});
+
+					}).then(function (res) {
+						return botui.message.bot({
+							delay: 1400,
+							content: '擅长Java，SpringBoot，MySql，Vue'
+						});
+
+					}).then(function (res) {
+						return botui.message.bot({
+							delay: 1400,
+							content: '嗯。。。喜欢看小说，喜欢古风/篮球/游泳/乒乓球'
+						});
+
+					}).then(function () {
+						return botui.action.button({
+							delay: 1000,
+							action: [{
+								text: '为什么叫Toretto呢？🤔',
+								value: 'erCi'
+							}]
+						});
+					}).then(function (res) {
+						return botui.message.bot({
+							delay: 1400,
+							content: '因为速度激情里的老大叫Toretto啊，是一个非常有担当的人'
+						});
+
+					}).then(function () {
+			return botui.action.button({
+							delay: 1000,
+							action: [{
+								text: '为什么是ふじさんの雪呢？🤔',
+								value: 'erCi'
+							}]
+						});
+					}).then(function (res) {
+						return botui.message.bot({
+							delay: 1400,
+							content: 'ふじさん是富士的意思，雪是富士山的雪，也是我女朋友的名字'
+						});
+
+					}).then(function () {
+						return botui.action.button({
+							delay: 1000,
+							action: [{
+								text: '首页的是谁啊？🤔',
+								value: 'erCi'
+							}]
+						});
+					}).then(function (res) {
+						return botui.message.bot({
+							delay: 1400,
+							content: '是我的女朋友啦😁'
+						});
+
+					}).then(function (res) {
+						return botui.message.bot({
+							delay: 1400,
+							content: '很可爱的吧'
+						});
+
+					}).then(function (res) {
+						return botui.message.bot({
+							delay: 2000,
+							content: '呐~在我博客玩耍吧(/▽＼=)'
+						});
+					});
+
+				};
+
+				var end = function () {
+					botui.message.add({
+						delay: 1200,
+						content: '![](https://www.cnblogs.com/images/cnblogs_com/zouwangblog/1476679/t_o_buting.jpg)'
+
+					});
+				};
+
+			}
+
+});
+</script>
+
+<!--botui end-->
+
+
+<!--雪花特效1&12月自动添加-->
+
+<div class="Snow">
+    <canvas id="Snow"></canvas>
+</div>
+<script src="https://blog-static.cnblogs.com/files/zouwangblog/xue.js"></script>
+
+
+<!--顶部加载条-->
+<link rel="stylesheet" href="https://blog-static.cnblogs.com/files/zouwangblog/nprogress.css">
+<script src="https://blog-static.cnblogs.com/files/zouwangblog/nprogress.js"></script>
+<script>
+NProgress.start();
+NProgress.done();
+</script>
