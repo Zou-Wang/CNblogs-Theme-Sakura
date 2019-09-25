@@ -1,3 +1,9 @@
+/*！
+ * Sakura application bundle theme ver 1.0
+ * @author Toretto
+ * @url https://www.cnblogs.com/zouwangblog/
+ * @date 2019.9.24
+ */
 (function ($) {
 	$.extend({
 		silence: (options) => {
