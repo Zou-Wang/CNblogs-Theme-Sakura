@@ -36,7 +36,7 @@
 
 * 选择模板
   按照图片内容设置模板
-  ![模板](E:\Tools\important\博客园备份\使用Custorm的\CNblogs-Theme-Sakura\img\1568773146(1).jpg)
+  ![模板](https://img2018.cnblogs.com/blog/1646268/201909/1646268-20190918142410336-166783367.jpg)
 
 * 顶部菜单设置
 
