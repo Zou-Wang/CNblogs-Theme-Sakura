@@ -1,6 +1,6 @@
 /*！
  * Sakura application bundle theme ver 1.0
- * @author Toretto
+ * @author 不忘编码
  * @url https://www.cnblogs.com/zouwangblog/
  * @date 2019.9.24
  */
@@ -17,8 +17,10 @@
 			this.defaluts = {
 				profile: {
 					enable: false,
-					avatar: null,
+					avatar: "https://images.cnblogs.com/cnblogs_com/zouwangblog/1537703/t_%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190829160024.jpg?a=1585808073202",
+					authorName: "不忘编码"
 					favicon: null,
+					notice: "念念不忘，必有回响",
 				},
 				catalog: {
 					enable: false,
@@ -249,7 +251,7 @@
 			const blogTitle = $(this.cnblogs.blogTitle).find('h1 a').html();
 			const autherName = $(this.cnblogs.publicProfile).find('a:eq(0)').html();
 			let $title = $('head').find('title');
-			$title.html($title.html().replace(`富士的雪 | ${autherName}`, `${blogTitle}`));
+			$title.html($title.html().replace(`春原庄的雪 | ${autherName}`, `${blogTitle}`));
 
 			// Build a tags button on navbar.
 			let $navList = $(this.cnblogs.navList);
@@ -748,9 +750,9 @@
 			//博客logo
 			var title = '<div class="site-branding">' +
 					'<span class="logolink moe-mashiro">' +
-					'<a href="https://www.cnblogs.com/zouwangblog/" alt="富士的雪">' +
+					'<a href="https://www.cnblogs.com/zouwangblog/" alt="春原庄的雪">' +
 					'<ruby><span class="sakuraso">ふじさん</span><span class="no">の</span><span class="shironeko">雪</span>' +
-					'<rt class="chinese-font">富士的雪</rt></ruby></a></span>' +
+					'<rt class="chinese-font">春原庄的雪</rt></ruby></a></span>' +
 					'</div>'
 			$('body').prepend(title);
 
@@ -953,6 +955,7 @@
 		 * 构建阅读页头部html 如果是文章则只显示标题，如果是随笔则显示发布时间，头像，阅读量
 		 */
 		postHeader() {
+			const config = this.defaluts.profile;
 			var center =
 					'<div class="pattern-center">' +
 					' <div class="pattern-attachment-img"><img src="" data-src=""' +
@@ -967,7 +970,7 @@
 			let post_view_count = $('#post_view_count').text() //阅读数
 			if (window.location.href.indexOf('articles') === -1) {
 				var header =
-						`<p class="entry-census"><span><a href="https://www.cnblogs.com/zouwangblog/"><img src="//pic.cnblogs.com/face/1646268/20190628143903.png"></a></span><span><a href="https://www.cnblogs.com/zouwangblog/">Toretto</a></span><span class="bull">·</span>${post_date}<span class="bull">·</span>${post_view_count} 次阅读</p>`;
+						`<p class="entry-census"><span><a href="https://www.cnblogs.com/zouwangblog/"><img src="${config.avatar}"></a></span><span><a href="https://www.cnblogs.com/zouwangblog/">${config.authorName}</a></span><span class="bull">·</span>${post_date}<span class="bull">·</span>${post_view_count} 次阅读</p>`;
 				$('.pattern-header').append(header)
 				$('.pattern-center').addClass('single-center')
 				$('.pattern-header').addClass('single-header')
