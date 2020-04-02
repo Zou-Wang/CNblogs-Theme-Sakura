@@ -151,6 +151,7 @@
   |                          | avatar        | 作者头像         | String  |                                                              |
   |                          | favicon       | 网站标题图标     | String  ||
   |                          | notice       | 公告     | String  |海上月是天上月，眼前人是心上人。|
+  |                          | authorName       | 作者姓名     | String  |不忘编码|
   | catalog（博文目录）      | enable        | 是否启用         | Boolean | false                                                        |
   |                          | move          | 是否允许拖拽     | Boolean | true                                                         |
   |                          | index         | 是否显示索引     | Boolean | true                                                         |
