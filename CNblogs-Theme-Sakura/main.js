@@ -1,9 +1,3 @@
-/*！
- * Sakura application bundle theme ver 1.0
- * @author 不忘编码
- * @url https://www.cnblogs.com/zouwangblog/
- * @date 2019.9.24
- */
 (function ($) {
 	$.extend({
 		silence: (options) => {
@@ -17,10 +11,8 @@
 			this.defaluts = {
 				profile: {
 					enable: false,
-					avatar: "https://images.cnblogs.com/cnblogs_com/zouwangblog/1537703/t_%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190829160024.jpg?a=1585808073202",
-					authorName: "不忘编码"
+					avatar: null,
 					favicon: null,
-					notice: "念念不忘，必有回响",
 				},
 				catalog: {
 					enable: false,
@@ -296,7 +288,7 @@
 					'<li><a href="https://www.cnblogs.com/zouwangblog/articles/11157339.html "><i class="fa fa-meetup" aria-hidden="true"></i> 我？</a></li>' +
 					'<li><a href="https://www.cnblogs.com/zouwangblog/articles/11346906.html "><i class="fa fa-area-chart" aria-hidden="true"></i> 统计</a></li>' +
 					'<li><a href="https://www.cnblogs.com/zouwangblog/articles/11350777.html "><i class="fa fa-heartbeat" aria-hidden="true"></i> 监控</a></li>' +
-					'<li><a href="https://www.cnblogs.com/zouwangblog/articles/11350787.html"><i class="iconfont icon-taohua" aria-hidden="true"></i> 主题</a></li>' +
+					'<li><a href="https://www.cnblogs.com/zouwangblog/p/11541835.html "><i class="iconfont icon-taohua" aria-hidden="true"></i> 主题</a></li>' +
 					'</ul>';
 			$('#blog_nav_myguanyu').after(guanyu);
 
@@ -751,7 +743,7 @@
 			var title = '<div class="site-branding">' +
 					'<span class="logolink moe-mashiro">' +
 					'<a href="https://www.cnblogs.com/zouwangblog/" alt="春原庄的雪">' +
-					'<ruby><span class="sakuraso">ふじさん</span><span class="no">の</span><span class="shironeko">雪</span>' +
+					'<ruby><span class="sakuraso">すのはら荘</span><span class="no">の</span><span class="shironeko">雪</span>' +
 					'<rt class="chinese-font">春原庄的雪</rt></ruby></a></span>' +
 					'</div>'
 			$('body').prepend(title);
@@ -830,7 +822,7 @@
 					`<div class="main-header">` +
 					`</div>` +
 					`<div class="focusinfo no-select">` +
-					`       <h1 class="center-text glitch is-glitching Ubuntu-font" data-text="${config.title}">${config.title}</h1>` +
+					`       <h1 class="center-text glitch is-glitching Ubuntu-font" data-text="Hi, Toretto!">${config.title}</h1>` +
 					`       <div class="header-info"><p><i class="fa fa-quote-left"></i> ${config.text} <i class="fa fa-quote-right"></i></p>` +
 					`           <div class="top-social_v2">` +
 					`              <li id="bg-pre"><img class="flipx" src="https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190808103709869-648245711.png"></li>` +
@@ -955,7 +947,6 @@
 		 * 构建阅读页头部html 如果是文章则只显示标题，如果是随笔则显示发布时间，头像，阅读量
 		 */
 		postHeader() {
-			const config = this.defaluts.profile;
 			var center =
 					'<div class="pattern-center">' +
 					' <div class="pattern-attachment-img"><img src="" data-src=""' +
@@ -970,7 +961,7 @@
 			let post_view_count = $('#post_view_count').text() //阅读数
 			if (window.location.href.indexOf('articles') === -1) {
 				var header =
-						`<p class="entry-census"><span><a href="https://www.cnblogs.com/zouwangblog/"><img src="${config.avatar}"></a></span><span><a href="https://www.cnblogs.com/zouwangblog/">${config.authorName}</a></span><span class="bull">·</span>${post_date}<span class="bull">·</span>${post_view_count} 次阅读</p>`;
+						`<p class="entry-census"><span><a href="https://www.cnblogs.com/zouwangblog/"><img src="//pic.cnblogs.com/face/1646268/20190628143903.png"></a></span><span><a href="https://www.cnblogs.com/zouwangblog/">Toretto</a></span><span class="bull">·</span>${post_date}<span class="bull">·</span>${post_view_count} 次阅读</p>`;
 				$('.pattern-header').append(header)
 				$('.pattern-center').addClass('single-center')
 				$('.pattern-header').addClass('single-header')

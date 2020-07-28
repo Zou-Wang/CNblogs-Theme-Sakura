@@ -7,7 +7,7 @@
             enable: true,
             avatar: 'https://img2018.cnblogs.com/blog/1646268/201907/1646268-20190701151456277-1502609418.jpg',
             favicon: 'https://files-cdn.cnblogs.com/files/zouwangblog/blog_logo.gif',
-            notice: '海上月是天上月，眼前人是心上人。'
+            notice: '个人博客地址：https://zouwang.vip/ 欢迎大家来踩'
         },
         catalog: {
             enable: true,
@@ -37,13 +37,10 @@
         },
 	topImg: {
 		homeTopImg: [
-"https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190808213853909-1772245301.jpg",
-"https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190808213858652-132088076.jpg"
-
+"https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190806172418911-2037584311.jpg",
 					],
               notHomeTopImg: [
-"https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190808214726187-2092834311.jpg",
-
+"https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190807151151330-1121103170.png",
 					]
 		},
                       topInfo: {
@@ -60,7 +57,7 @@
     });
 </script>
 
-<!--倒计时-->
+<!--纪念日-->
 <div id="showsectime"></div>
 
 <script type="text/javascript">
@@ -83,8 +80,8 @@ var e_hrsold=(daysold-e_daysold)*-24;
 var hrsold=Math.floor(e_hrsold);
 var e_minsold=(hrsold-e_hrsold)*-60;
 var minsold=Math.floor((hrsold-e_hrsold)*-60); var seconds=Math.floor((minsold-e_minsold)*-60).toString();
-document.getElementById("showsectime").innerHTML = daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+document.getElementById("showsectime").innerHTML = "第"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
 setTimeout(showsectime, 1000);
 }showsectime();
 </script>
-<!--倒计时end-->
+<!--纪念日end-->
