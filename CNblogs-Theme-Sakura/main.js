@@ -153,7 +153,7 @@
 				})
 				$('.chinese-font').css('display', 'none')
 			});
-			<!--离开页面改变title-->
+			//<!--离开页面改变title-->
 			var time;
 			var normar_title = document.title;
 			document.addEventListener('visibilitychange', function () {
@@ -898,42 +898,52 @@
 		 * 构建首页随笔列表
 		 */
 		setHomeSuiBiList() {
-			let article_list = document.getElementsByClassName('day');
-			let author = $(this.cnblogs.publicProfile).find('a:eq(0)').html() //作者
-			for (let i = article_list.length - 1; i >= 0; i--) {
-				let time = $('.day').find('div.dayTitle')[i].textContent.replace('年', '-').replace('月', '-').replace('日', ''); //获取年月日
-				let postTitle = $('.day').find('div.postTitle')[i].innerHTML;//<a class="postTitle2" href="https://www.cnblogs.com/zouwangblog/p/11194299.html">[置顶] 博客园美化</a>
-				let readMore = $('.day').find('a.c_b_p_desc_readmore')[i].href;//https://www.cnblogs.com/zouwangblog/p/11194299.html
-				let content = $('.day').find('div.c_b_p_desc')[i].textContent.replace('阅读全文', ''); //摘要
-				let desc = $('.day').find('div.postDesc')[i].textContent;//posted @ 2019-07-16 13:27 ふじさんの雪 阅读 (3073) 评论 (56)<a href="https://i.cnblogs.com/EditPosts.aspx?postid=11194299" rel="nofollow">编辑</a>
-				let readNum = desc.substring(desc.indexOf("(") + 1, desc.indexOf(")")); //阅读量
-				let comNum = desc.substring(desc.lastIndexOf("(") + 1, desc.lastIndexOf(")")); //评论量
-				let bianji = $('.day').find('div.postDesc')[i].firstElementChild.href; //获取编辑链接 https://i.cnblogs.com/EditPosts.aspx?postid=11194299
-				let url
-				let desc_img = article_list[i].getElementsByClassName('desc_img')[0];
-				if (desc_img !== undefined) {
-					url = desc_img.src;//https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190807204419622-1770363151.jpg
-				} else {
-					url = 'https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190807151203983-873040918.jpg'
+		let article_list = $('.day');
+    	let author = $(this.cnblogs.publicProfile).find('a:eq(0)').html() //作者
+		for(let i = article_list.length-1;i>=0;i--)
+		{
+			let time = $('.day').find('div.dayTitle')[i].textContent.replace('年', '-').replace('月', '-').replace('日', ''); //获取年月日
+			let PostTitles = $(article_list[i]).find('.postTitle');
+			let readMores = $(article_list[i]).find('a.c_b_p_desc_readmore');
+			let descs = $(article_list[i]).find('.postDesc');
+			let infos = $(article_list[i]).find('.postCon');
+			let contents = $(article_list[i]).find('.c_b_p_desc');
+			for(let j=PostTitles.length-1;j>=0;j--)
+			{
+				let readMore = $(readMores[j]).context.href;
+				let postTitle = $(PostTitles[j]).context.innerHTML;
+				let desc = $(descs[j]).text();
+				let readNum = desc.substring(desc.indexOf("(") + 1, desc.indexOf(")"));
+				let comNum = desc.substring(desc.lastIndexOf("(") + 1, desc.lastIndexOf(")"));
+				let edit =  $(descs[j]).find('a')[0].href;
+				let url = $(infos[j]).find('img')[0];
+				let content = contents[j].textContent.replace('阅读全文','');
+				if(url!=undefined)
+				{
+					url = url.src;
+				}else{
+					url = url = 'https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190807151203983-873040918.jpg';   
 				}
 				let html = `<div class="post post-list-thumb post-list-show">` +
-						`  <div class="post-thumb"> <a href="${readMore}"> <img class="lazyload" src="${url}"  data-src="${url}"> </a></div>` +
-						`  <div class="post-content-wrap">` +
-						`   <div class="post-content">` +
-						`     <div class="post-date"> <i class="iconfont icon-time"></i>发布于 ${time}</div>` +
-						`     <div class="post-title">${postTitle}</div>` +
-						`     <div class="post-meta"> <span><i class="iconfont icon-attention"></i>${readNum} 热度</span> <span class="comments-number"><i class="iconfont icon-mark"></i>${comNum} 条评论</span> <span><i class="iconfont icon-cc-user"></i><a href="https://www.cnblogs.com/zouwangblog/p/11157339.html"></a>${author}</span></div>` +
-						`     <div class="float-content"><p>${content}</p>` +
-						`        <div class="post-bottom">` +
-						`           <a href="${readMore}" class="button-normal"><i class="iconfont icon-gengduo"></i></a>` +
-						`           <a href="${bianji}" class="button-normal"><i class="iconfont icon-bianji"></i></a>` +
-						`        </div>` +
-						`     </div>` +
-						`  </div>` +
-						` </div>` +
-						`</div>`;
+				`  <div class="post-thumb"> <a href="${readMore}"> <img class="lazyload" src="${url}"  data-src="${url}"> </a></div>` +
+				`  <div class="post-content-wrap">` +
+				`   <div class="post-content">` +
+				`     <div class="post-date"> <i class="iconfont icon-time"></i>发布于 ${time}</div>` +
+				`     <div class="post-title">${postTitle}</div>` +
+				`     <div class="post-meta"> <span><i class="iconfont icon-attention"></i>${readNum} 热度</span> <span class="comments-number"><i class="iconfont icon-mark"></i>${comNum} 条评论</span> <span><i class="iconfont icon-cc-user"></i><a href="https://www.cnblogs.com/zouwangblog/p/11157339.html"></a>${author}</span></div>` +
+				`     <div class="float-content"><p>${content}</p>` +
+				`        <div class="post-bottom">` +
+				`           <a href="${readMore}" class="button-normal"><i class="iconfont icon-gengduo"></i></a>` +
+				`           <a href="${edit}" class="button-normal"><i class="iconfont icon-bianji"></i></a>` +
+				`        </div>` +
+				`     </div>` +
+				`  </div>` +
+				` </div>` +
+				`</div>`;
 				$('.forFlow').prepend(html);
 			}
+		}
+	
 			$('.post-list-thumb:odd').addClass('post-list-thumb-left')
 
 			//构建notice
