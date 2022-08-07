@@ -76,6 +76,10 @@ body:before {
     z-index: -1;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 a {
     transition: all .3s ease !important
 }
@@ -90,7 +94,9 @@ a:hover {
 }
 
 #home {
-    width: 100%
+    width: 100%;
+    min-width: 0px !important;
+    max-width: 100vw;
 }
 
 #header {
@@ -140,9 +146,10 @@ a:hover {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     margin-left: 100px;
     transition: all .4s ease;
+    padding-right: 1%;
 }
 
 #header #navList li {
@@ -190,10 +197,8 @@ a:hover {
 }
 
 #main {
-    width: 800px;
     margin: 100vh auto 0;
     min-height: 750px;
-    padding: 70px 10px 0 10px;
     animation-name: fadeIn;
     animation-duration: 1s;
     animation-iteration-count: 1;
@@ -201,6 +206,7 @@ a:hover {
     -webkit-animation-duration: 1s;
     -webkit-animation-iteration-count: 1;
     z-index: 9999;
+    min-width: 0px !important;
 }
 
 #main #mainContent {
@@ -209,7 +215,6 @@ a:hover {
 
 #main #mainContent .forFlow {
     margin: 0 auto;
-    margin-left: 0;
     max-width: 800px
 }
 
@@ -596,6 +601,7 @@ a:hover {
     border-top: 1px solid #EEF2F8;
     font-weight: 300;
     z-index: 9999;
+    padding-bottom: 70px;
 }
 
 #footer div {
@@ -1434,13 +1440,6 @@ a:hover {
     }
 }
 
-@media screen and (min-width: 768px) and (max-width: 980px) {
-    #blog-comments-placeholder, #comment_form {
-        padding: 10px;
-        margin-left: 0
-    }
-}
-
 @media only screen and (max-width: 767px) {
     #home {
         font-size: 12px !important
@@ -1459,7 +1458,7 @@ a:hover {
     }
 
     #main {
-        margin-top: 60px;
+        margin-top: 100vh;
         padding: 0 15px !important
     }
 
@@ -1644,8 +1643,9 @@ div.info.note:before {
     text-align: center;
     background-image: url(https://img2018.cnblogs.com/blog/1646268/201908/1646268-20190806114008215-138720377.jpg);
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    /* background-attachment: fixed; */
     background-size: cover;
+    background-position: center;  /*图片居中*/
     overflow: hidden;
     position: absolute;
     top: 0;
@@ -1841,6 +1841,7 @@ div.info.note:before {
     position: absolute;
     max-width: 800px;
     padding: 0 10px;
+    width: 95%;
     top: 49.3%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -1864,7 +1865,8 @@ div.info.note:before {
 .glitch {
     position: relative;
     color: #fff;
-    mix-blend-mode: lighten
+    mix-blend-mode: lighten;
+    overflow: hidden;
 }
 
 .glitch:before, .glitch:after {
@@ -1990,7 +1992,7 @@ div.info.note:before {
 }
 
 .header-info {
-    width: 100%;
+    
     margin: auto;
     font-size: 16px;
     color: #eaeadf;
@@ -2019,14 +2021,22 @@ div.info.note:before {
     margin: 0;
     font-family: 'Ubuntu', sans-serif;
     font-weight: 700;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .top-social_v2 {
-    height: 35px;
+    /* height: 35px; */   /*移动端适配时删除 */
     margin-bottom: -15px;
     margin-left: 10px;
     list-style: none;
-    display: inline-block;
+    /* display: inline-block; */
+    display: flex;        /*移动端适配flex布局 */
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .top-social_v2 li {
@@ -2207,7 +2217,7 @@ header.single-header {
     color: #fff
 }
 
-@media (max-width: 860px) {
+@media (max-width: 768px) {
     .pattern-center-sakura header.single-header {
         padding: 0 4%
     }
@@ -2259,7 +2269,7 @@ header.single-header {
     text-align: center
 }
 
-@media screen and (max-width: 860px) {
+@media screen and (max-width: 768px) {
     .cd-top {
         display: none;
         height: 60px;
@@ -2365,15 +2375,15 @@ header.single-header {
     transition: box-shadow .3s ease
 }
 
-@media (min-width: 860px) {
+@media (min-width: 768px) {
     .post-list-thumb:hover {
         box-shadow: 0 5px 10px 5px rgba(110, 110, 110, .4)
     }
 }
 
-@media (max-width: 860px) {
+@media (max-width: 768px) {
     .post-list-thumb {
-        margin: 0;
+        margin: 5% 0;
         height: auto
     }
 }
@@ -2486,8 +2496,8 @@ header.single-header {
 /*图片在左侧*/
 .post-list-thumb-left .post-content-wrap {
     float: right;
-    padding-left: 30px;
-    padding-right: 0;
+    padding-left: 0px;
+    padding-right: 30px;
     text-align: right;
     margin: 20px 10px 10px 0
 }
@@ -2513,21 +2523,24 @@ header.single-header {
     .post-list-thumb {
         padding: 0;
         border: 0;
-        box-shadow: none
     }
 
     .post-thumb, .post-content-wrap, .float-content {
         width: 100%;
-        left: 0
+        left: 0;
     }
 
-    .post-content-wrap, .post-list-thumb-left .post-content-wrap {
-        text-align: left;
-        margin: 0;
-        padding: 20px;
-        float: none;
+    .post-thumb {
+        display: none;
+    }
+
+    .post-list-thumb .post-content-wrap {
+        text-align: left !important;
+        margin: 0 !important;
+        padding: 15px 15px 0px 15px !important;
+        float: none !important;
         box-shadow: none;
-        border-top: 0
+        border-top: 0;
     }
 
     .post-list-thumb:before {
@@ -2589,15 +2602,17 @@ header.single-header {
 }
 /*notice*/
 .notice {
-    padding: 20px 0px 20px 20px;
+    padding: 20px 20px 20px 20px;
     border: 1px dashed #e6e6e6;
     color: #969696;
     position: relative;
     display: inline-block;
-    width: 780px;
     background: #fbfbfb50;
     border-radius: 10px;
     font-size: 15px;
+    width: 85%;
+    margin: 10px;
+    margin-left: 10%;
 }
 
 .notice i {
@@ -2612,7 +2627,7 @@ header.single-header {
     vertical-align: middle
 }
 
-@media (max-width: 860px) {
+@media (max-width: 768px) {
     .notice {
         margin-top: 40px;
         margin-bottom: 20px
@@ -2964,4 +2979,51 @@ header.single-header {
         opacity: 0;
         transform: rotateZ(40deg) scale(.6, .6)
     }
+}
+
+/* 重写播放器滚动字条样式（颜色太深，与博客正文会有冲突） */
+.aplayer .aplayer-lrc p {
+    font-weight: 600 !important;
+}
+
+.aplayer .aplayer-lrc p.aplayer-lrc-current {
+    opacity: 0.3 !important;
+}
+
+.aplayer .aplayer-lrc p.aplayer-lrc-current {
+    opacity: 0.4 !important;
+}
+
+/* 评论区留言输入框 */
+div.commentform textarea {
+    height: 155px !important;
+}
+
+/* 导航栏手机侧边弹出适配 */
+#main.open {
+    transform: translateX(250px) translateY(0);
+    -webkit-transform: translateX(250px) translateY(0);
+    right: 0;
+    left: 0;
+}
+
+#mo-nav.open, .openNav.open {
+    transform: translateX(250px) translateY(0);
+    -webkit-transform: translateX(250px);
+    position: fixed;
+}
+
+#mo-nav {
+    background-color: #FFF;
+    width: 250px;
+    max-width: 250px !important;
+    height: 100%;
+    z-index: 9999;
+    position: fixed;
+    top: 0;
+    left: -250px;
+    display: block;
+    overflow-x: hidden !important;
+    overflow-y: auto;
+    transition: background, transform .5s !important;
 }
